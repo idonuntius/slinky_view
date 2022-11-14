@@ -1,7 +1,4 @@
 library slinky_view;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/slinky_controller.dart';
+export 'src/slinky_view.dart';
