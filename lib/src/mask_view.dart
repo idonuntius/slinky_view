@@ -6,6 +6,7 @@ class MaskView extends StatelessWidget {
     super.key,
     required this.colorStream,
     required this.onTap,
+    required this.barrierDismissible,
   });
 
   /// Stream to change the color of mask view.
@@ -13,6 +14,9 @@ class MaskView extends StatelessWidget {
 
   /// Called when the user taps this mask view.
   final VoidCallback onTap;
+
+  /// The barrierDismissible argument is used to indicate whether tapping on the barrier will scroll down the panel.
+  final bool barrierDismissible;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +27,15 @@ class MaskView extends StatelessWidget {
         if (!snapshot.hasData || snapshot.data!.opacity == 0) {
           return const SizedBox.shrink();
         } else {
-          return GestureDetector(
-            onTap: onTap,
-            child: SizedBox(
-              height: double.infinity,
-              width: double.infinity,
-              child: ColoredBox(color: snapshot.data!),
+          return IgnorePointer(
+            ignoring: !barrierDismissible,
+            child: GestureDetector(
+              onTap: onTap,
+              child: SizedBox(
+                height: double.infinity,
+                width: double.infinity,
+                child: ColoredBox(color: snapshot.data!),
+              ),
             ),
           );
         }

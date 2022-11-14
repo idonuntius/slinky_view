@@ -35,6 +35,7 @@ class SlinkyViewState extends State<SlinkyView> {
             _scroll(widget.panelParameter.minSize);
             _scrollToTopController.sink.add(null);
           },
+          barrierDismissible: widget.barrierDismissible,
         ),
         SlinkyPanel(
           panelParameter: widget.panelParameter,
