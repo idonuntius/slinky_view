@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:slinky_view/src/slinky_pannel_app_bar.dart';
+import 'package:slinky_view/src/slinky_panel_app_bar.dart';
 
 /// SlinkyPannelParameter is a class that handles panel parameters.
 class SlinkyPanelParameter {
   const SlinkyPanelParameter({
     required this.contents,
-    this.appBar = slinkyPannelAppBar,
+    this.appBar = slinkyPanelAppBar,
     this.maxSize = 0.9,
     this.minSize = 0.4,
     this.borderRadius = const BorderRadius.all(Radius.circular(32)),
