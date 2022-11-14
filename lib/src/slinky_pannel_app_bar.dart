@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Default app bar.
 const slinkyPannelAppBar = SliverAppBar(
   elevation: 0,
   title: SizedBox(
