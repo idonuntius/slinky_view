@@ -38,6 +38,7 @@ class SlinkyViewState extends State<SlinkyView> {
         ),
         SlinkyPanel(
           panelParameter: widget.panelParameter,
+          scrollAnimationParameter: widget.scrollParameter,
           onPointerUp: () => _onPointerUp(),
           controller: widget.controller,
           scrollToTopStream: _scrollToTopController.stream,
@@ -49,13 +50,13 @@ class SlinkyViewState extends State<SlinkyView> {
   void _onPointerUp() {
     final double size;
     if (_currentPanelSize == widget.panelParameter.minSize) {
-      if (widget.controller.size >= widget.panelParameter.minSize + widget.scrollTolerance) {
+      if (widget.controller.size >= widget.panelParameter.minSize + widget.scrollParameter.scrollTolerance) {
         size = widget.panelParameter.maxSize;
       } else {
         size = widget.panelParameter.minSize;
       }
     } else {
-      if (widget.controller.size <= widget.panelParameter.maxSize - widget.scrollTolerance) {
+      if (widget.controller.size <= widget.panelParameter.maxSize - widget.scrollParameter.scrollTolerance) {
         size = widget.panelParameter.minSize;
       } else {
         size = widget.panelParameter.maxSize;
@@ -89,8 +90,8 @@ class SlinkyViewState extends State<SlinkyView> {
   void _scroll(double position) {
     widget.controller.animateTo(
       position,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.linear,
+      duration: widget.scrollParameter.duration,
+      curve: widget.scrollParameter.curve,
     );
   }
 }

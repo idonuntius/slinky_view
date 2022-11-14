@@ -3,10 +3,12 @@ import 'package:slinky_view/slinky_view.dart';
 
 typedef OnPointerUp = void Function();
 
+/// SlinkyPanel is a scrollable panel.
 class SlinkyPanel extends StatefulWidget {
   const SlinkyPanel({
     super.key,
     required this.panelParameter,
+    required this.scrollAnimationParameter,
     required this.onPointerUp,
     required this.controller,
     required this.scrollToTopStream,
@@ -14,6 +16,9 @@ class SlinkyPanel extends StatefulWidget {
 
   /// SlinkyPannelParameter is a class that handles panel parameters.
   final SlinkyPanelParameter panelParameter;
+
+  /// SlinkyScrollParameter is a class that scroll animation parameters.
+  final SlinkyScrollParameter scrollAnimationParameter;
 
   /// Called when a pointer is no longer in contact with the screen.
   final OnPointerUp onPointerUp;
@@ -37,8 +42,8 @@ class SlinkyPannelState extends State<SlinkyPanel> {
     widget.scrollToTopStream.listen((_) {
       _scrollController.animateTo(
         0,
-        duration: const Duration(milliseconds: 100),
-        curve: Curves.linear,
+        duration: widget.scrollAnimationParameter.duration,
+        curve: widget.scrollAnimationParameter.curve,
       );
     });
   }

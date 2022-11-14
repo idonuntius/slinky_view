@@ -11,15 +11,12 @@ class SlinkyView extends StatefulWidget {
     required this.panelParameter,
     required this.body,
     required this.controller,
-    this.scrollTolerance = 0.1,
+    this.scrollParameter = const SlinkyScrollParameter(),
     this.maskColor = const Color(0x99000000),
   });
 
   /// SlinkyPannelParameter is a class that handles panel parameters.
   final SlinkyPanelParameter panelParameter;
-
-  /// Scroll amount tolerance.
-  final double scrollTolerance;
 
   /// The body is displayed below the panel.
   final Widget body;
@@ -28,6 +25,9 @@ class SlinkyView extends StatefulWidget {
   /// MaskView is a Widget that is displayed between the panel and
   ///  backgroundContent when the panel is scrolled.
   final Color maskColor;
+
+  /// SlinkyScrollParameter is a class that scroll animation parameters.
+  final SlinkyScrollParameter scrollParameter;
 
   /// A controller that can be used to programmatically control panel.
   final SlinkyController controller;
