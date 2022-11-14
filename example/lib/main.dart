@@ -40,23 +40,25 @@ class MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SlinkyView(
       controller: _controller,
-      panelContents: [
-        SliverFixedExtentList(
-          delegate: SliverChildBuilderDelegate(
-            childCount: 10,
-            (context, index) {
-              return ColoredBox(
-                color: index % 2 == 0 ? Colors.grey.shade400 : Colors.grey.shade200,
-              );
-            },
+      panelParameter: SlinkyPanelParameter(
+        contents: [
+          SliverFixedExtentList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: 10,
+              (context, index) {
+                return ColoredBox(
+                  color: index % 2 == 0 ? Colors.grey.shade400 : Colors.grey.shade200,
+                );
+              },
+            ),
+            itemExtent: 120,
           ),
-          itemExtent: 120,
-        ),
-        const SliverFillRemaining(
-          hasScrollBody: false,
-          child: ColoredBox(color: Colors.white),
-        ),
-      ],
+          const SliverFillRemaining(
+            hasScrollBody: false,
+            child: ColoredBox(color: Colors.white),
+          ),
+        ],
+      ),
       body: Container(
         color: Colors.blue.shade100,
         width: double.infinity,

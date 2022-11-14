@@ -6,40 +6,20 @@ typedef OnPointerUp = void Function();
 class SlinkyPanel extends StatefulWidget {
   const SlinkyPanel({
     super.key,
+    required this.panelParameter,
     required this.onPointerUp,
     required this.controller,
-    required this.maxSize,
-    required this.minSize,
-    required this.borderRadius,
-    required this.panelBar,
-    required this.panelContents,
     required this.scrollToTopStream,
-  }) : assert(panelBar is SliverAppBar);
+  });
+
+  /// SlinkyPannelParameter is a class that handles panel parameters.
+  final SlinkyPanelParameter panelParameter;
 
   /// Called when a pointer is no longer in contact with the screen.
   final OnPointerUp onPointerUp;
 
   ///  A controller that can be used to programmatically control this panel.
   final SlinkyController controller;
-
-  /// The maximum fractional value of the panel height to use when displaying the panel.
-  /// The default value is `0.9`.
-  final double maxSize;
-
-  /// The minimum fractional value of the panel height to use when displaying the panel.
-  /// The default value is `0.5`.
-  final double minSize;
-
-  /// The rounded corners of panel.
-  final BorderRadiusGeometry borderRadius;
-
-  /// The widget displayed at the top in the Panel.
-  /// The widget must be SliverAppBar
-  final Widget panelBar;
-
-  /// The widget's displayed in the Panel.
-  /// The widget's must be SliverMultiBoxAdaptorWidget(SliverList, SliverGrid, SliverFixedExtentList, etc.).
-  final List<Widget> panelContents;
 
   /// This Stream is for scrolling to Top.
   final Stream<void> scrollToTopStream;
@@ -70,19 +50,19 @@ class SlinkyPannelState extends State<SlinkyPanel> {
       child: SizedBox.expand(
         child: DraggableScrollableSheet(
           controller: widget.controller,
-          maxChildSize: widget.maxSize,
-          minChildSize: widget.minSize,
-          initialChildSize: widget.minSize,
+          maxChildSize: widget.panelParameter.maxSize,
+          minChildSize: widget.panelParameter.minSize,
+          initialChildSize: widget.panelParameter.minSize,
           builder: (context, scrollController) {
             _scrollController = scrollController;
             return ClipRRect(
-              borderRadius: widget.borderRadius,
+              borderRadius: widget.panelParameter.borderRadius,
               child: CustomScrollView(
                 controller: scrollController,
                 physics: const ClampingScrollPhysics(),
                 slivers: [
-                  widget.panelBar,
-                  ...widget.panelContents,
+                  widget.panelParameter.appBar,
+                  ...widget.panelParameter.contents,
                 ],
               ),
             );

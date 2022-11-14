@@ -13,7 +13,7 @@ class SlinkyViewState extends State<SlinkyView> {
   @override
   void initState() {
     super.initState();
-    _currentPanelSize = widget.panelMinSize;
+    _currentPanelSize = widget.panelParameter.minSize;
     widget.controller.addListener(_onScrolled);
   }
 
@@ -32,18 +32,14 @@ class SlinkyViewState extends State<SlinkyView> {
         MaskView(
           colorStream: _maskColorController.stream,
           onTap: () {
-            _scroll(widget.panelMinSize);
+            _scroll(widget.panelParameter.minSize);
             _scrollToTopController.sink.add(null);
           },
         ),
         SlinkyPanel(
+          panelParameter: widget.panelParameter,
           onPointerUp: () => _onPointerUp(),
           controller: widget.controller,
-          maxSize: widget.panelMaxSize,
-          minSize: widget.panelMinSize,
-          borderRadius: widget.panelBorderRadius,
-          panelBar: widget.panelBar,
-          panelContents: widget.panelContents,
           scrollToTopStream: _scrollToTopController.stream,
         ),
       ],
@@ -52,17 +48,17 @@ class SlinkyViewState extends State<SlinkyView> {
 
   void _onPointerUp() {
     final double size;
-    if (_currentPanelSize == widget.panelMinSize) {
-      if (widget.controller.size >= widget.panelMinSize + widget.scrollTolerance) {
-        size = widget.panelMaxSize;
+    if (_currentPanelSize == widget.panelParameter.minSize) {
+      if (widget.controller.size >= widget.panelParameter.minSize + widget.scrollTolerance) {
+        size = widget.panelParameter.maxSize;
       } else {
-        size = widget.panelMinSize;
+        size = widget.panelParameter.minSize;
       }
     } else {
-      if (widget.controller.size <= widget.panelMaxSize - widget.scrollTolerance) {
-        size = widget.panelMinSize;
+      if (widget.controller.size <= widget.panelParameter.maxSize - widget.scrollTolerance) {
+        size = widget.panelParameter.minSize;
       } else {
-        size = widget.panelMaxSize;
+        size = widget.panelParameter.maxSize;
       }
     }
     _scroll(size);
@@ -74,18 +70,19 @@ class SlinkyViewState extends State<SlinkyView> {
   }
 
   void _changeCurrentPanelSize() {
-    if (_currentPanelSize == widget.panelMinSize && widget.controller.size == widget.panelMaxSize) {
-      _currentPanelSize = widget.panelMaxSize;
-    } else if (_currentPanelSize == widget.panelMaxSize && widget.controller.size == widget.panelMinSize) {
-      _currentPanelSize = widget.panelMinSize;
+    if (_currentPanelSize == widget.panelParameter.minSize && widget.controller.size == widget.panelParameter.maxSize) {
+      _currentPanelSize = widget.panelParameter.maxSize;
+    } else if (_currentPanelSize == widget.panelParameter.maxSize &&
+        widget.controller.size == widget.panelParameter.minSize) {
+      _currentPanelSize = widget.panelParameter.minSize;
     }
   }
 
   void _changeMaskColor() {
     final opacitiyOfOverlay = widget.maskColor.opacity;
     final result = opacitiyOfOverlay *
-        (widget.controller.size - widget.panelMinSize) /
-        (widget.panelMaxSize - widget.panelMinSize);
+        (widget.controller.size - widget.panelParameter.minSize) /
+        (widget.panelParameter.maxSize - widget.panelParameter.minSize);
     _maskColorController.sink.add(widget.maskColor.withOpacity(result));
   }
 
