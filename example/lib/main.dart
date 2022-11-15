@@ -47,7 +47,9 @@ class MyHomePageState extends State<MyHomePage> {
               childCount: 10,
               (context, index) {
                 return ColoredBox(
-                  color: index % 2 == 0 ? Colors.grey.shade400 : Colors.grey.shade200,
+                  color: index % 2 == 0
+                      ? Colors.grey.shade400
+                      : Colors.grey.shade200,
                 );
               },
             ),

@@ -51,13 +51,17 @@ class SlinkyViewState extends State<SlinkyView> {
   void _onPointerUp() {
     final double size;
     if (_currentPanelSize == widget.panelParameter.minSize) {
-      if (widget.controller.size >= widget.panelParameter.minSize + widget.scrollParameter.scrollTolerance) {
+      if (widget.controller.size >=
+          widget.panelParameter.minSize +
+              widget.scrollParameter.scrollTolerance) {
         size = widget.panelParameter.maxSize;
       } else {
         size = widget.panelParameter.minSize;
       }
     } else {
-      if (widget.controller.size <= widget.panelParameter.maxSize - widget.scrollParameter.scrollTolerance) {
+      if (widget.controller.size <=
+          widget.panelParameter.maxSize -
+              widget.scrollParameter.scrollTolerance) {
         size = widget.panelParameter.minSize;
       } else {
         size = widget.panelParameter.maxSize;
@@ -72,7 +76,8 @@ class SlinkyViewState extends State<SlinkyView> {
   }
 
   void _changeCurrentPanelSize() {
-    if (_currentPanelSize == widget.panelParameter.minSize && widget.controller.size == widget.panelParameter.maxSize) {
+    if (_currentPanelSize == widget.panelParameter.minSize &&
+        widget.controller.size == widget.panelParameter.maxSize) {
       _currentPanelSize = widget.panelParameter.maxSize;
     } else if (_currentPanelSize == widget.panelParameter.maxSize &&
         widget.controller.size == widget.panelParameter.minSize) {
