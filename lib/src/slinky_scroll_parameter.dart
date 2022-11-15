@@ -6,7 +6,7 @@ class SlinkyScrollParameter {
     this.duration = const Duration(milliseconds: 100),
     this.curve = Curves.linear,
     this.scrollTolerance = 0.1,
-  });
+  }) : assert(scrollTolerance >= 0.0 && scrollTolerance < 1.0);
 
   /// Scrolling time.
   final Duration duration;
@@ -21,10 +21,12 @@ class SlinkyScrollParameter {
   SlinkyScrollParameter copyWith({
     Duration? duration,
     Curve? curve,
+    double? scrollTolerance,
   }) {
     return SlinkyScrollParameter(
       duration: duration ?? this.duration,
       curve: curve ?? this.curve,
+      scrollTolerance: scrollTolerance ?? this.scrollTolerance,
     );
   }
 }
