@@ -1,0 +1,31 @@
+name: Test
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  FLUTTER_VERSION: 3.3.8
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: install flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: "stable"
+
+      - name: setup
+        run: flutter pub get
+
+      - name: analyze
+        run: flutter analyze
+
+      - name: test
+        run: flutter test --test-randomize-ordering-seed=random
