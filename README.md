@@ -1,7 +1,7 @@
 # slinky_view
 A sheet that aligns to the bottom of a widget and expands as scroll up.
 
-<img src="slinky_view_sample.gif" width="240">
+<img src="https://user-images.githubusercontent.com/10494192/201906827-a0eab41c-59c3-48de-8398-08d44d32d68c.gif" width="240">
 
 ## Getting started
 Add dependency.
