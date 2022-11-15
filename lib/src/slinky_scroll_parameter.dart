@@ -9,12 +9,15 @@ class SlinkyScrollParameter {
   }) : assert(scrollTolerance >= 0.0 && scrollTolerance < 1.0);
 
   /// Scrolling time.
+  /// The default value is `Duration(milliseconds: 100)`.
   final Duration duration;
 
   /// Animation curves.
+  /// The default value is `Curves.linear`.
   final Curve curve;
 
   /// Scroll amount tolerance.
+  /// The default value is `0.1`.
   final double scrollTolerance;
 
   /// Creates a copy of this SlinkyScrollAnimationParameter but with the given fields replaced with the new values.

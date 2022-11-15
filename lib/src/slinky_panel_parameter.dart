@@ -14,12 +14,10 @@ class SlinkyPanelParameter {
         assert(maxSize > minSize);
 
   /// The widget displayed at the top in the Panel.
-  /// Thi widget must be SliverAppBar
   final SliverAppBar appBar;
 
   /// The widget's displayed in the Panel.
-  /// The widget's must be SliverMultiBoxAdaptorWidget
-  /// (SliverList, SliverGrid, SliverFixedExtentList, etc.).
+  /// The widget's must be Sliver widgets.
   final List<Widget> contents;
 
   /// The maximum fractional value of the panel height to use when displaying the panel.
