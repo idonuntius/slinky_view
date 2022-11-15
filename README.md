@@ -1,5 +1,5 @@
 # slinky_view
-![Pub Version](https://img.shields.io/pub/v/slinky_view)
+[![Pub Version](https://img.shields.io/pub/v/slinky_view)](https://pub.dev/packages/slinky_view)
 [![Test](https://github.com/idonuntius/slinky_view/actions/workflows/test.yml/badge.svg)](https://github.com/idonuntius/slinky_view/actions/workflows/test.yml)
 
 A sheet that aligns to the bottom of a widget and expands as scroll up.
@@ -15,7 +15,6 @@ dependencies:
 ```
 
 ## Usage
-### Super simple to use
 
 ```dart
 import 'package:slinky_view/slinky_view.dart';
