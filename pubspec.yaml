@@ -1,6 +1,6 @@
 name: slinky_view
 description: A sheet that aligns to the bottom of a widget and expands as scroll up.
-version: 0.0.1
+version: 1.0.0
 homepage: https://github.com/idonuntius/slinky_view
 
 environment:
