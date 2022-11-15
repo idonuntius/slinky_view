@@ -1,4 +1,7 @@
 # slinky_view
+![Pub Version](https://img.shields.io/pub/v/slinky_view)
+[![Test](https://github.com/idonuntius/slinky_view/actions/workflows/test.yml/badge.svg)](https://github.com/idonuntius/slinky_view/actions/workflows/test.yml)
+
 A sheet that aligns to the bottom of a widget and expands as scroll up.
 
 <img src="https://user-images.githubusercontent.com/10494192/201906827-a0eab41c-59c3-48de-8398-08d44d32d68c.gif" width="240">
