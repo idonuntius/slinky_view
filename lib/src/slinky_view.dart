@@ -24,7 +24,7 @@ class SlinkyView extends StatefulWidget {
 
   /// The maskColor is the color of MaskView.
   /// MaskView is a Widget that is displayed between the panel and
-  ///  backgroundContent when the panel is scrolled.
+  /// body when the panel is scrolled.
   final Color maskColor;
 
   /// The barrierDismissible argument is used to indicate whether tapping on the barrier will scroll down the panel.
