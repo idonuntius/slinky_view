@@ -1,5 +1,5 @@
 name: slinky_view
-description: slinky_view is view as semi-modal.
+description: A sheet that aligns to the bottom of a widget and expands as scroll up.
 version: 0.0.1
 homepage: https://github.com/idonuntius/slinky_view
 
