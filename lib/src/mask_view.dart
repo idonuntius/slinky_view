@@ -24,7 +24,7 @@ class MaskView extends StatelessWidget {
       initialData: Colors.transparent,
       stream: colorStream,
       builder: (context, snapshot) {
-        if (!snapshot.hasData || snapshot.data!.opacity == 0) {
+        if (!snapshot.hasData || snapshot.data!.a == 0) {
           return const SizedBox.shrink();
         } else {
           return IgnorePointer(
