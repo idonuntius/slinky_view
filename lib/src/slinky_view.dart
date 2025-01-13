@@ -89,17 +89,13 @@ class SlinkyViewState extends State<SlinkyView> {
   void _onPointerUp() {
     final double size;
     if (_currentPanelSize == widget.panelParameter.minSize) {
-      if (widget.controller.size >=
-          widget.panelParameter.minSize +
-              widget.scrollParameter.scrollTolerance) {
+      if (widget.controller.size >= widget.panelParameter.minSize + widget.scrollParameter.scrollTolerance) {
         size = widget.panelParameter.maxSize;
       } else {
         size = widget.panelParameter.minSize;
       }
     } else {
-      if (widget.controller.size <=
-          widget.panelParameter.maxSize -
-              widget.scrollParameter.scrollTolerance) {
+      if (widget.controller.size <= widget.panelParameter.maxSize - widget.scrollParameter.scrollTolerance) {
         size = widget.panelParameter.minSize;
       } else {
         size = widget.panelParameter.maxSize;
@@ -114,8 +110,7 @@ class SlinkyViewState extends State<SlinkyView> {
   }
 
   void _changeCurrentPanelSize() {
-    if (_currentPanelSize == widget.panelParameter.minSize &&
-        widget.controller.size == widget.panelParameter.maxSize) {
+    if (_currentPanelSize == widget.panelParameter.minSize && widget.controller.size == widget.panelParameter.maxSize) {
       _currentPanelSize = widget.panelParameter.maxSize;
     } else if (_currentPanelSize == widget.panelParameter.maxSize &&
         widget.controller.size == widget.panelParameter.minSize) {
@@ -124,11 +119,12 @@ class SlinkyViewState extends State<SlinkyView> {
   }
 
   void _changeMaskColor() {
-    final opacitiyOfOverlay = widget.maskColor.opacity;
+    final opacitiyOfOverlay = widget.maskColor.a;
     final result = opacitiyOfOverlay *
         (widget.controller.size - widget.panelParameter.minSize) /
         (widget.panelParameter.maxSize - widget.panelParameter.minSize);
-    _maskColorController.sink.add(widget.maskColor.withOpacity(result));
+    final alpha = (256 * result).toInt();
+    _maskColorController.sink.add(widget.maskColor.withAlpha(alpha));
   }
 
   void _scroll(double position) {
