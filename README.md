@@ -11,7 +11,7 @@ Add dependency.
 
 ```yaml
 dependencies:
-  slinky_view: ^1.0.0
+  slinky_view: ^1.1.0
 ```
 
 ## Usage
